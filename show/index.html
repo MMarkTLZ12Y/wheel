@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body class="admin">
+  <header>
+    <h1>Admin Site</h1>
+  </header>
+  <section class="card">
+    <h2>15 kérdés</h2>
+    <div id="questions" class="list-vertical"></div>
+    <button id="fill-demo" class="btn ghost">Demo kérdések betöltése</button>
+  </section>
+
+  <section class="card">
+    <h2>Rap / Személyes (7 db)</h2>
+    <p class="hint">Ezekből lesznek a <strong>meglepetés</strong> elemek. (Pl. rapcím + szöveg, vagy személyes kérdés leírása.)</p>
+    <div id="raps" class="list-vertical"></div>
+  </section>
+
+  <section class="card">
+    <h2>Beállítások</h2>
+    <label>Háttér GIF URL (LED-fal hullámok)
+      <input id="bgUrl" type="url" placeholder="assets/ledwall.gif"/>
+    </label>
+    <label>Üdvözlő szöveg (műsoroldalon)
+      <input id="welcomeText" type="text" placeholder="Üdv a műsorban!"/>
+    </label>
+  </section>
+
+  <footer class="actions">
+    <button id="save" class="btn primary">Mentés</button>
+    <button id="start" class="btn">Tovább a visszaszámlálóhoz</button>
+    <span id="status" class="status"></span>
+  </footer>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

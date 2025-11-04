@@ -1,0 +1,149 @@
+/* ===== Alap ===== */
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body {
+  font-family: system-ui, Arial, sans-serif;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 16px;
+  line-height: 1.45;
+}
+h1 { font-size: 1.6rem; margin-bottom: 16px; }
+.hint { color: #666; font-size: .9rem; margin-top: 8px; }
+
+/* gombok */
+.actions { margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap; }
+button, .back {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+}
+.primary { background: #2e7d32; color: #fff; }
+.secondary { background: #eee; }
+.back { border: 1px solid #ccc; background: #fff; color: #111; }
+
+/* ===== Index (bevitel) ===== */
+.inputs-grid {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 8px 12px;
+  align-items: center;
+}
+.inputs-grid label { color: #444; }
+.inputs-grid input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* ===== Lista (page2) ===== */
+.wrapper { display: grid; gap: 10px; }
+.wrapper p {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+.ures { color: #888; font-style: italic; }
+
+/* ===== Szerencsekerék (page3) ===== */
+.result-box {
+  border: 2px dashed #cfd8dc;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.result-text { font-weight: 700; font-size: 1.2rem; }
+.muted { color: #6b7280; font-style: italic; }
+.pulse { animation: pulse 0.4s ease; }
+@keyframes pulse { 0%{transform:scale(1);} 50%{transform:scale(1.02);} 100%{transform:scale(1);} }
+
+.wheel-area { position: relative; width: 520px; max-width: 100%; margin: 0 auto 16px; }
+.wheel-wrap { width: 520px; height: 520px; max-width: 100%; margin: 0 auto; transform: rotate(0deg); will-change: transform; }
+.wheel { width: 100%; height: 100%; }
+.wheel-svg { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; pointer-events: none; }
+
+/* mutató felül */
+.pointer {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  width: 0; height: 0;
+  transform: translateX(-50%);
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 18px solid #e53935;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.25));
+  z-index: 3;
+}
+
+/* szelet-feliratok sugárirányban */
+.slice-label{
+  display:block;
+  white-space:nowrap;
+  overflow:hidden;            /* vizuális vágás */
+  /* nem használunk text-overflow: ellipsis; mert a JS rak „…”-t szükség esetén */
+  text-align:left;
+  color:#0f172a;
+  font-weight:600;
+  line-height:1.2;
+  pointer-events:none;
+}
+
+/* kerék dísz */
+.wheel-bg { fill: #e3f2fd; }
+.wheel-hub { fill: #ffffff; stroke: #90a4ae; stroke-width: 2; }
+.wheel-dot { fill: #607d8b; }
+
+/* ===== MODÁL / POPUP ===== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.55); /* sötét áttetsző */
+  display: none;       /* alapból rejtve */
+  align-items: center; /* középre */
+  justify-content: center;
+  z-index: 9999;       /* kerék fölött */
+}
+.modal-backdrop.show { display: flex; }
+
+.modal {
+  background: #fff;
+  color: #111827;
+  border-radius: 14px;
+  padding: 20px 22px;
+  width: min(720px, 92vw);
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+  transform: scale(.96);
+  opacity: 0;
+  animation: modalIn .18s ease-out forwards;
+}
+@keyframes modalIn {
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-body { text-align: center; }
+.modal-body h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+}
+.modal-body p#modalText {
+  margin: 0 0 8px 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.modal-hint {
+  margin: 8px 0 0 0;
+  color: #6b7280;
+  font-size: .95rem;
+}

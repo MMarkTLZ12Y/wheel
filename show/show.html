@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Szerencsekerék – Műsor</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body class="show">
+  <div id="bg" class="bg"></div>
+
+  <header class="topbar">
+    <div class="who">
+      <span class="pill">Márk</span>
+      <span id="cohostPill" class="pill"></span>
+    </div>
+    <div class="tools">
+      <button id="toggleCountdown" class="btn ghost">Visszaszámláló</button>
+      <button id="resetWheel" class="btn ghost">Kerék reset</button>
+    </div>
+  </header>
+
+  <main class="stage">
+    <section class="welcome card translucent">
+      <h1 id="welcome"></h1>
+      <p>Összesen: <strong>15 kérdés</strong> + <strong>3 meglepetés</strong>.</p>
+      <div class="quick-stats">
+        <div>Felhasznált kérdések: <span id="usedQ">0</span>/15</div>
+        <div>Felhasznált meglepetések: <span id="usedS">0</span>/3</div>
+      </div>
+      <button id="openWheel" class="btn primary">🎡 Szerencsekerék pörgetése</button>
+    </section>
+
+    <section class="history card translucent">
+      <h2>Lejátszott elemek</h2>
+      <ol id="history"></ol>
+    </section>
+  </main>
+
+  <!-- Kerék modal -->
+  <div id="wheelModal" class="modal hidden">
+    <div class="modal-content">
+      <canvas id="wheelCanvas" width="520" height="520"></canvas>
+      <div class="modal-actions">
+        <button id="spin" class="btn primary">Pörgetés</button>
+        <button id="closeWheel" class="btn ghost">Bezár</button>
+      </div>
+      <div id="result" class="result"></div>
+    </div>
+  </div>
+
+  <!-- Surprise picker -->
+  <div id="surpriseModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Meglepetés kiválasztása</h3>
+      <p class="hint">Válassz egy még nem használt Rap/Személyes elemet:</p>
+      <div id="surpriseList" class="list-vertical"></div>
+      <div class="modal-actions">
+        <button id="cancelSurprise" class="btn ghost">Mégse</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/show.js"></script>
+</body>
+</html>
