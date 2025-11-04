@@ -12,7 +12,10 @@ function fmt(sec){
   const s = Math.floor(sec%60).toString().padStart(2,'0');
   return `${m}:${s}`;
 }
-function render(){ $("#timer").textContent = fmt(remaining); }
+
+function render(){
+  $("#timer").textContent = fmt(remaining);
+}
 
 function tick(ts){
   if(!running){ lastTs = 0; return; }
@@ -32,7 +35,7 @@ function tick(ts){
       flash.classList.remove("show");
       setTimeout(()=>{
         flash.classList.add("hidden");
-        window.location.href = "page3.html";  // lejárat után kerék oldal
+        window.location.href = "page3.html";  // automatikus továbblépés a műsoroldalra
       }, 350);
     }, 900);
     return;
@@ -43,21 +46,27 @@ function tick(ts){
 document.addEventListener('DOMContentLoaded', ()=>{
   render();
 
+  // kattintás a számlálóra → indít/szünet
   $("#timer").addEventListener('click', ()=>{
     running = !running;
     if(running){ rafId = requestAnimationFrame(tick); }
   });
 
-  $("#reset").addEventListener('click', ()=>{
-    running = false;
-    remaining = total;
-    render();
+  // billentyűk: R = reset, U = műsoroldal, S = kérdések szerkesztése
+  window.addEventListener('keydown', (e)=>{
+    const k = e.key.toLowerCase();
+    if(k === 'r'){
+      running = false;
+      remaining = total;
+      render();
+    }else if(k === 'u'){
+      window.location.href = "page3.html";
+    }else if(k === 's'){
+      window.location.href = "index.html";
+    }
   });
 
-  $("#goShow").addEventListener('click', ()=>{
-    window.location.href = "page3.html";
-  });
-
+  // Guard: ha nincs adat az adminból, visszalépés
   const data = localStorage.getItem(LS_KEY);
   if(!data){
     if(confirm("Nincsenek elmentett adatok. Vissza az adminhoz?")){
