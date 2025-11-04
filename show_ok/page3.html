@@ -9,10 +9,6 @@
 <body>
   <h1>Szerencsekerék – 15 kérdés + 3 extra</h1>
 
-  <div class="result-box" id="resultBox">
-    <span class="muted">Kattints a kerékre a pörgetéshez. Pörgetés után a <strong>Q</strong> engedélyez újra.</span>
-  </div>
-
   <div class="wheel-area">
     <div class="pointer" aria-hidden="true"></div>
     <div class="wheel-wrap">
@@ -20,18 +16,11 @@
     </div>
   </div>
 
-  <div class="actions">
-    <a class="back" href="index.html">Kérdések szerkesztése</a>
-    <a class="back" href="page2.html">Kérdések listája</a>
-  </div>
-
-  <!-- MODÁL / POPUP – nincs benne script -->
+  <!-- MODÁL / POPUP – csak a találat szöveg -->
   <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal" role="dialog" aria-modal="true">
       <div class="modal-body">
-        <h2 id="modalTitle">Kipörgetett kérdés</h2>
         <p id="modalText">—</p>
-        <p class="modal-hint">Nyomd meg a <strong>Q</strong> billentyűt a bezáráshoz és az új pörgetés engedélyezéséhez.</p>
       </div>
     </div>
   </div>
